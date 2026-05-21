@@ -1,10 +1,9 @@
+import { memo } from "react";
 import illustration from "../assets/illustration-account.svg";
 
-/**
- * Left column shared across every step: the "Create your account" heading
- * block and the account illustration.
- */
-export function BrandPanel() {
+// Static left column — heading block + account illustration. Memoised so it
+// never re-renders as the form state changes on the right.
+export const BrandPanel = memo(function BrandPanel() {
   return (
     <div className="absolute left-20 top-0 h-full w-[600px]">
       <div className="absolute left-0 top-24 w-[540px]">
@@ -28,4 +27,4 @@ export function BrandPanel() {
       />
     </div>
   );
-}
+});

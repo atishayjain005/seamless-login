@@ -1,5 +1,5 @@
 interface ProgressBarProps {
-  /** Fraction filled, 0..1. */
+  // Fraction filled, 0..1.
   value: number;
 }
 

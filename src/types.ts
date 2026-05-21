@@ -19,7 +19,7 @@ export interface ToastMessage {
   text: string;
 }
 
-/** Props shared by every step component in the flow. */
+// Props shared by every step component in the flow.
 export interface ScreenProps {
   form: FormState;
   update: (patch: Partial<FormState>) => void;

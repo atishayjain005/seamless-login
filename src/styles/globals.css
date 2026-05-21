@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* ---- Design tokens (extracted from the Figma "Login flow" file) ---- */
 @theme {
   --font-sans: "Rubik", system-ui, -apple-system, "Segoe UI", sans-serif;
 

@@ -3,7 +3,7 @@ import { ProgressBar } from "./ProgressBar";
 import { Button } from "./Button";
 
 interface ScreenShellProps {
-  /** Progress fraction 0..1. Omit to hide the progress bar (step 1). */
+  // Progress fraction 0..1. Omit to hide the progress bar (step 1).
   progress?: number;
   heading: ReactNode;
   subheading?: ReactNode;
@@ -15,10 +15,8 @@ interface ScreenShellProps {
   onContinue: () => void;
 }
 
-/**
- * The white form card on the right of every step: an optional top progress
- * bar, a heading, the form body, and the Back / Continue footer.
- */
+// White form card on the right of every step: optional progress bar,
+// heading, form body, and the Back / Continue footer.
 export function ScreenShell({
   progress,
   heading,

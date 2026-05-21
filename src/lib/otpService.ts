@@ -1,17 +1,11 @@
-/**
- * Mock OTP service.
- *
- * Real SMS delivery requires a paid provider (Twilio / MSG91 / Fast2SMS …),
- * a secret API key, and a backend to keep that key off the client. This mock
- * keeps the exact async shape of such a service so a real provider can be
- * dropped in by replacing the two functions below with `fetch` calls to your
- * own backend endpoints (`/api/otp/send`, `/api/otp/verify`).
- */
+// Mock OTP service. Real SMS needs a paid provider + a secret key + a backend
+// to keep that key off the client, so this keeps the async shape only. To go
+// live, swap sendOtp/verifyOtp for fetch() calls to your own backend endpoints.
 
 export interface OtpSendResult {
   ok: boolean;
   message: string;
-  /** The generated code — surfaced in the UI only because no real SMS is sent. */
+  // Generated code — surfaced in the UI only because no real SMS is sent.
   code?: string;
 }
 
@@ -31,20 +25,24 @@ const OTP_TTL_MS = 5 * 60 * 1000;
 
 let session: OtpSession | null = null;
 
-const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+const wait = (ms: number) =>
+  new Promise<void>((resolve) => setTimeout(resolve, ms));
 
 function generateCode(): string {
   const max = 10 ** OTP_LENGTH;
   return String(Math.floor(Math.random() * max)).padStart(OTP_LENGTH, "0");
 }
 
-/** "Sends" an OTP to the given phone number and starts a verification session. */
+// "Sends" an OTP to the given phone number and opens a verification session.
 export async function sendOtp(fullPhone: string): Promise<OtpSendResult> {
   await wait(750);
 
   const digits = fullPhone.replace(/\D/g, "");
   if (digits.length < 10) {
-    return { ok: false, message: "Enter a valid phone number before requesting an OTP." };
+    return {
+      ok: false,
+      message: "Enter a valid phone number before requesting an OTP.",
+    };
   }
 
   const code = generateCode();
@@ -52,7 +50,7 @@ export async function sendOtp(fullPhone: string): Promise<OtpSendResult> {
   return { ok: true, message: `OTP sent to ${fullPhone}`, code };
 }
 
-/** Verifies a code against the active session. */
+// Verifies a code against the active session.
 export async function verifyOtp(input: string): Promise<OtpVerifyResult> {
   await wait(650);
 

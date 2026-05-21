@@ -10,7 +10,7 @@ interface CountrySelectProps {
   onSelect: (country: Country) => void;
 }
 
-/** Searchable country-code dropdown populated from the RestCountries API. */
+// Searchable country-code dropdown populated from the RestCountries API.
 export function CountrySelect({ dialCode, flag, onSelect }: CountrySelectProps) {
   const { countries, loading } = useCountries();
   const [open, setOpen] = useState(false);

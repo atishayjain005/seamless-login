@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 export interface Country {
-  /** ISO 3166-1 alpha-2 code, e.g. "IN". */
+  // ISO 3166-1 alpha-2 code, e.g. "IN".
   code: string;
   name: string;
-  /** International dial code, e.g. "+91". */
+  // International dial code, e.g. "+91".
   dialCode: string;
-  /** Flag emoji. */
+  // Flag emoji.
   flag: string;
 }
 
@@ -17,10 +17,9 @@ interface RawCountry {
   flag?: string;
 }
 
-const ENDPOINT =
-  "https://restcountries.com/v3.1/all?fields=name,idd,cca2,flag";
+const ENDPOINT = "https://restcountries.com/v3.1/all?fields=name,idd,cca2,flag";
 
-/** A small offline fallback so the dropdown still works if the API is down. */
+// Offline fallback so the dropdown still works if the API is unreachable.
 const FALLBACK: Country[] = [
   { code: "US", name: "United States", dialCode: "+1", flag: "🇺🇸" },
   { code: "GB", name: "United Kingdom", dialCode: "+44", flag: "🇬🇧" },
@@ -40,8 +39,8 @@ function toCountry(raw: RawCountry): Country | null {
   const code = raw.cca2;
   if (!root || !name || !code) return null;
 
-  const suffixes = raw.idd?.suffixes ?? [];
   // One suffix → a full dial code (e.g. +9 + 1). Many/none → the root is it.
+  const suffixes = raw.idd?.suffixes ?? [];
   const dialCode = suffixes.length === 1 ? `${root}${suffixes[0]}` : root;
 
   return { code, name, dialCode, flag: raw.flag ?? "🏳️" };
@@ -53,7 +52,7 @@ interface CountriesState {
   error: string | null;
 }
 
-/** Loads the full country list (flag, name, dial code) from RestCountries. */
+// Loads the full country list (flag, name, dial code) from RestCountries.
 export function useCountries(): CountriesState {
   const [state, setState] = useState<CountriesState>({
     countries: [],
