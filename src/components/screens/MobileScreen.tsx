@@ -63,7 +63,7 @@ export function MobileScreen({
             />
           </div>
 
-          <div className="relative flex h-[60px] flex-1 items-center rounded-xl border border-line bg-white shadow-card transition focus-within:border-brand focus-within:shadow-focus">
+          <div className="relative flex h-[60px] min-w-0 flex-1 items-center rounded-xl border border-line bg-white shadow-card transition focus-within:border-brand focus-within:shadow-focus">
             <input
               id={inputId}
               type="tel"

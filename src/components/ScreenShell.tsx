@@ -15,8 +15,8 @@ interface ScreenShellProps {
   onContinue: () => void;
 }
 
-// White form card on the right of every step: optional progress bar,
-// heading, form body, and the Back / Continue footer.
+// White form card. Fills its wrapper (a fixed 672x856 box on desktop, a fluid
+// content-height box on mobile), with the footer pinned to the bottom.
 export function ScreenShell({
   progress,
   heading,
@@ -31,27 +31,27 @@ export function ScreenShell({
   const hasProgress = progress !== undefined;
 
   return (
-    <section className="absolute right-20 top-[84px] h-[856px] w-[672px] overflow-hidden rounded-3xl bg-white shadow-panel animate-screen-in">
+    <section className="relative flex h-full min-h-[480px] w-full flex-col overflow-hidden rounded-3xl bg-white shadow-panel animate-screen-in">
       {hasProgress && (
         <div className="absolute inset-x-0 top-0 z-[1]">
           <ProgressBar value={progress} />
         </div>
       )}
 
-      <div className="relative h-full p-14">
-        <h2 className="text-2xl font-medium leading-[34px] tracking-[-0.36px] text-navy animate-rise-1">
+      <div className="flex flex-1 flex-col p-6 sm:p-8 lg:p-14">
+        <h2 className="text-xl font-medium leading-snug tracking-[-0.36px] text-navy sm:text-2xl sm:leading-[34px] animate-rise-1">
           {heading}
         </h2>
 
         {subheading && (
-          <p className="mt-3 text-base font-normal text-label animate-rise-2">
+          <p className="mt-2 text-sm font-normal text-label sm:mt-3 sm:text-base animate-rise-2">
             {subheading}
           </p>
         )}
 
-        <div className="mt-10 animate-rise-3">{children}</div>
+        <div className="mt-7 sm:mt-9 lg:mt-10 animate-rise-3">{children}</div>
 
-        <div className="absolute inset-x-14 bottom-14 flex gap-4 animate-rise-4">
+        <div className="mt-auto flex gap-3 pt-10 sm:gap-4 animate-rise-4">
           <Button variant="secondary" fullWidth onClick={onBack}>
             Back
           </Button>

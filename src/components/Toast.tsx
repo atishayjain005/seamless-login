@@ -26,16 +26,14 @@ export function Toast({ toast, onClose }: ToastProps) {
   const Icon = ICON[toast.kind];
 
   return (
-    <div className="fixed left-1/2 top-6 z-50 -translate-x-1/2 animate-toast-in">
+    <div className="fixed left-1/2 top-4 z-50 w-[calc(100vw-2rem)] max-w-[440px] -translate-x-1/2 sm:top-6 animate-toast-in">
       <div className="flex items-center gap-3 rounded-2xl border border-line bg-white py-3 pl-3 pr-4 shadow-card">
         <span
           className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${ACCENT[toast.kind]}`}
         >
           <Icon size={16} strokeWidth={2.6} />
         </span>
-        <p className="max-w-[420px] text-sm font-medium text-navy">
-          {toast.text}
-        </p>
+        <p className="flex-1 text-sm font-medium text-navy">{toast.text}</p>
         <button
           type="button"
           onClick={onClose}

@@ -46,7 +46,7 @@ export function OtpInput({ value, onChange, length = 4 }: OtpInputProps) {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-2.5 sm:gap-4">
       {Array.from({ length }).map((_, index) => (
         <input
           key={`otp-${index}`}
@@ -63,7 +63,7 @@ export function OtpInput({ value, onChange, length = 4 }: OtpInputProps) {
           onKeyDown={(event) => handleKeyDown(index, event)}
           onPaste={handlePaste}
           className={clsx(
-            "h-[72px] w-[72px] rounded-xl border bg-white text-center text-[26px] font-medium text-navy shadow-card outline-none transition",
+            "aspect-square w-full max-w-[72px] min-w-0 flex-1 rounded-xl border bg-white text-center text-2xl font-medium text-navy shadow-card outline-none transition sm:text-[26px]",
             "focus:border-brand focus:shadow-focus",
             value[index] ? "border-brand" : "border-line",
           )}

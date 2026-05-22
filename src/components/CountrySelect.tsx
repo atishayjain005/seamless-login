@@ -65,7 +65,7 @@ export function CountrySelect({ dialCode, flag, onSelect }: CountrySelectProps) 
       </button>
 
       {open && (
-        <div className="absolute left-0 top-[68px] z-20 w-[320px] overflow-hidden rounded-xl border border-line bg-white shadow-card-hover">
+        <div className="absolute left-0 top-[68px] z-20 w-[min(320px,calc(100vw-2.5rem))] overflow-hidden rounded-xl border border-line bg-white shadow-card-hover">
           <div className="flex items-center gap-2 border-b border-line px-3.5">
             <Search size={16} className="shrink-0 text-label" />
             <input

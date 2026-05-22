@@ -13,9 +13,9 @@ function computeScale(): number {
   );
 }
 
-// Scales the fixed 1440x1024 design frame down to fit smaller viewports
-// without distorting any pixel-level spacing. Resolved synchronously so the
-// first paint is already correct, and never scales above 1.
+// Scales the fixed 1440x1024 desktop frame to fit the viewport without
+// distorting any pixel-level spacing. Resolved synchronously so the first
+// paint is correct, and never scales above 1.
 export function useFrameScale(): number {
   const [scale, setScale] = useState(computeScale);
 
