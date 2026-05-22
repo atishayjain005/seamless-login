@@ -15,8 +15,7 @@ interface ScreenShellProps {
   onContinue: () => void;
 }
 
-// White form card. Fills its wrapper (a fixed 672x856 box on desktop, a fluid
-// content-height box on mobile), with the footer pinned to the bottom.
+// White form card — fills its wrapper, footer pinned to the bottom.
 export function ScreenShell({
   progress,
   heading,

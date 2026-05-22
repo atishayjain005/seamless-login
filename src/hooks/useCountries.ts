@@ -6,7 +6,6 @@ export interface Country {
   name: string;
   // International dial code, e.g. "+91".
   dialCode: string;
-  // Flag emoji.
   flag: string;
 }
 

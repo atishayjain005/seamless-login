@@ -1,6 +1,4 @@
-// Mock OTP service. Real SMS needs a paid provider + a secret key + a backend
-// to keep that key off the client, so this keeps the async shape only. To go
-// live, swap sendOtp/verifyOtp for fetch() calls to your own backend endpoints.
+// Mock OTP service — to go live, swap sendOtp/verifyOtp for real backend fetch() calls.
 
 export interface OtpSendResult {
   ok: boolean;

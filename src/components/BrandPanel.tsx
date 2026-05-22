@@ -2,8 +2,7 @@ import { memo } from "react";
 import illustration from "../assets/illustration-account.svg";
 
 interface BrandPanelProps {
-  // Desktop renders the absolutely-positioned heading + illustration inside
-  // the fixed frame; mobile renders just a centred heading above the card.
+  // Desktop: absolutely-positioned heading + illustration. Mobile: centred heading only.
   desktop?: boolean;
 }
 
